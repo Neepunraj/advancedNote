@@ -11,7 +11,7 @@ type NoteformProps={
     onSubmit:(data:NoteData)=>void
     onAddTag :(tag:Tag) => void
     availableTags:Tag[]
-}
+} & Partial<NoteData>
 
 const NoteForm = ({onSubmit, onAddTag,availableTags}:NoteformProps) => {
     const titleRef = useRef<HTMLInputElement>(null)
@@ -53,15 +53,16 @@ const NoteForm = ({onSubmit, onAddTag,availableTags}:NoteformProps) => {
                         return [...prev,newTag]
                     })
                    }}
-                   options={availableTags.map(tag=> {
+
+                   options={availableTags.map(tag=>{
                     return {label:tag.label,value:tag.id}
                    })}
                    value={selectedTags.map(tag=>{
-                    return {label:tag.label,Value:tag.id}
+                    return {label:tag.label,value:tag.id}
                    })}
                    onChange={tags=>{
                     setselectedTags(tags.map(tag=>{
-                        return {label:tag.label,id:tag.Value}
+                        return {label:tag.label,id:tag.value}
                     }))
                    }}
                   
