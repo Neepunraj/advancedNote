@@ -29,7 +29,7 @@ type SimplifiedNote = {
 };
 
 const NoteList = ({ availableTags, notes }: NoteListProps) => {
-  const { id } = useParams();
+  
   const [selectedTags, setSelecetedTags] = useState<Tag[]>([]);
   const [title, setTitle] = useState("");
 
@@ -56,10 +56,10 @@ const NoteList = ({ availableTags, notes }: NoteListProps) => {
             <Link to={"/new"}>
               <Button variant="primary">Create</Button>
             </Link>
-            <Button variant="outline-danger">Delete</Button>
-            <Link to={`/${id}/edit`}>
-              <Button variant="outline-secondary">Edit</Button>
-            </Link>
+          
+           
+              <Button variant="outline-secondary">Edit Tags</Button>
+           
           </Stack>
         </Col>
       </Row>
